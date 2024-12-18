@@ -1,4 +1,5 @@
 import flet as ft
+import math
 from calculate import Calculator
 from buttons import DigitButton, OperatorButton, ActionButton
 
@@ -29,81 +30,57 @@ class CalculatorApp(ft.Container):
                 ft.Row(
                     expand=True,
                     controls=[
-
-                        ActionButton(
-                            text="AC",
-                            button_clicked=self.button_clicked,
-                            action="clear",
-                        ),
-                        ActionButton(
-                            text="+/-",
-                            button_clicked=self.button_clicked,
-                            action="negate",
-                        ),
-                        ActionButton(
-                            text="%",
-                            button_clicked=self.button_clicked,
-                            action="percent",
-                        ),
-
-                        OperatorButton(
-                            text="÷",
-                            button_clicked=self.button_clicked,
-                            operations="div",
-                        ),
+                        ActionButton(text="tan", button_clicked=self.button_clicked, action="tan",),
                     ]
                 ),
                 ft.Row(
                     expand=True,
                     controls=[
-                        DigitButton(
-                            text="7", button_clicked=self.button_clicked, value=7),
-                        DigitButton(
-                            text="8", button_clicked=self.button_clicked, value=8),
-                        DigitButton(
-                            text="9", button_clicked=self.button_clicked, value=9),
-                        OperatorButton(
-                            text="*", button_clicked=self.button_clicked, operations="mul"),
+                        ActionButton(text="π", button_clicked=self.button_clicked, action="pi",),
+                        ActionButton(text="AC", button_clicked=self.button_clicked, action="clear",),
+                        ActionButton(text="+/-", button_clicked=self.button_clicked, action="negate",),
+                        ActionButton(text="%", button_clicked=self.button_clicked, action="percent",),
+                        OperatorButton(text="÷", button_clicked=self.button_clicked,operations="div",),
                     ]
                 ),
                 ft.Row(
                     expand=True,
                     controls=[
-                        DigitButton(
-                            text="4", button_clicked=self.button_clicked, value=4),
-                        DigitButton(
-                            text="5", button_clicked=self.button_clicked, value=5),
-                        DigitButton(
-                            text="6", button_clicked=self.button_clicked, value=6),
-                        OperatorButton(
-                            text="-", button_clicked=self.button_clicked, operations="sub"),
+                        ActionButton(text="√", button_clicked=self.button_clicked, action="sqrt",),
+                        DigitButton(text="7", button_clicked=self.button_clicked, value=7),
+                        DigitButton(text="8", button_clicked=self.button_clicked, value=8),
+                        DigitButton(text="9", button_clicked=self.button_clicked, value=9),
+                        OperatorButton(text="*", button_clicked=self.button_clicked, operations="mul"),
                     ]
                 ),
                 ft.Row(
                     expand=True,
                     controls=[
-                        DigitButton(
-                            text="1", button_clicked=self.button_clicked, value=1),
-                        DigitButton(
-                            text="2", button_clicked=self.button_clicked, value=2),
-                        DigitButton(
-                            text="3", button_clicked=self.button_clicked, value=3),
-                        OperatorButton(
-                            text="+", button_clicked=self.button_clicked, operations="add"),
+                        ActionButton(text="^", button_clicked=self.button_clicked, action="pow",),
+                        DigitButton(text="4", button_clicked=self.button_clicked, value=4),
+                        DigitButton(text="5", button_clicked=self.button_clicked, value=5),
+                        DigitButton(text="6", button_clicked=self.button_clicked, value=6),
+                        OperatorButton(text="-", button_clicked=self.button_clicked, operations="sub"),
                     ]
                 ),
                 ft.Row(
                     expand=True,
                     controls=[
-                        DigitButton(
-                            text="0", expand=1, button_clicked=self.button_clicked, value=0
-                        ),
-                        DigitButton(
-                            text=".", button_clicked=self.button_clicked, value="."),
-                        ActionButton(
-                            text="⌫", button_clicked=self.button_clicked, action="backspace"),
-                        ActionButton(
-                            text="=", button_clicked=self.button_clicked, action="calculate"),
+                        ActionButton(text="sin", button_clicked=self.button_clicked, action="sin",),
+                        DigitButton(text="1", button_clicked=self.button_clicked, value=1),
+                        DigitButton(text="2", button_clicked=self.button_clicked, value=2),
+                        DigitButton(text="3", button_clicked=self.button_clicked, value=3),
+                        OperatorButton(text="+", button_clicked=self.button_clicked, operations="add"),
+                    ]
+                ),
+                ft.Row(
+                    expand=True,
+                    controls=[
+                        ActionButton(text="cos", button_clicked=self.button_clicked, action="cos",),
+                        DigitButton(text="0", expand=1, button_clicked=self.button_clicked, value=0),
+                        DigitButton(text=".", button_clicked=self.button_clicked, value="."),
+                        ActionButton(text="⌫", button_clicked=self.button_clicked, action="backspace"),
+                        ActionButton(text="=", button_clicked=self.button_clicked, action="calculate"),
                     ]
                 ),
             ]
@@ -172,6 +149,32 @@ class CalculatorApp(ft.Container):
                 )
             )
             self.reset()
+        elif action == "backspace":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
+        elif action == "pi":
+            self.result.value = self.result.value * math.pi
+        elif action == "sqrt":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
+        elif action == "pow":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
+        elif action == "sin":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
+        elif action == "cos":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
+        elif action == "tan":
+            self.result.value = self.result.value[:-1]
+            if self.result.value == "":
+                self.result.value == "0"
         else:
             raise ValueError("Invalid action")
 
