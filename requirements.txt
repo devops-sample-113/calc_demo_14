@@ -1,1 +1,33 @@
 flet
+
+
+ elif action == "pi":
+                self.result.value = float(self.result.value) * math.pi
+            elif action == "sqrt":
+                self.result.value = str(
+                    self.format_number(
+                        math.sqrt(float(self.result.value))
+                    )
+                )
+            elif action == "pow":
+                self.operator ="pow"
+                self.operand1 = current_value
+                self.new_operand = True
+            elif action == "sin":
+                self.result.value = str(
+                    self.format_number(
+                        math.sin(math.radians(float(self.result.value)))
+                    )
+                )
+            elif action == "cos":
+                self.result.value = str(
+                    self.format_number(
+                        math.cos(math.radians(float(self.result.value)))
+                    )
+                )
+            elif action == "tan":
+                self.result.value = str(
+                    self.format_number(
+                        math.tan(math.radians(float(self.result.value)))
+                    )
+                )
